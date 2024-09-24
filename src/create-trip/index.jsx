@@ -1,7 +1,7 @@
 import { Input } from '@/components/ui/input';
 import { AI_PROMPT, SelectBudgetOption, SelectTravelsList } from '../constants/options.jsx';
 import React, { useEffect, useState } from 'react';
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+
 import { Button } from '@/components/ui/button.jsx';
 import { toast } from 'sonner';
 import { chatSession } from '@/services/AIModel.jsx';
@@ -20,6 +20,7 @@ import axios from 'axios';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '@/services/fireBaseConfig.jsx';
 import { useNavigate } from 'react-router-dom';
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 const CreateTrip = () => {
   const [place, setplace] = useState();
