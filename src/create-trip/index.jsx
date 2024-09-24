@@ -1,7 +1,7 @@
 import { Input } from '@/components/ui/input';
 import { AI_PROMPT, SelectBudgetOption, SelectTravelsList } from '../constants/options.jsx';
 import React, { useEffect, useState } from 'react';
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+import GooglePlacesAutocomplete from './../node_modules/react-google-places-autocomplete';
 import { Button } from '@/components/ui/button.jsx';
 import { toast } from 'sonner';
 import { chatSession } from '@/services/AIModel.jsx';
