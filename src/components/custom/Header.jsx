@@ -40,7 +40,7 @@ const Header = () => {
 
   return (
     <div className='p-3 shadow-sm flex justify-between items-center px-5'>
-      <img src="/logo.svg" alt="logo" />
+      <img src="/logoipsum-245.svg" alt="logo" />
       <div className='flex items-center gap-5'>
          {/* ModeToggle component */}
          <ModeToggle />
