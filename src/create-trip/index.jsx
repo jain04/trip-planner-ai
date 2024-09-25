@@ -181,7 +181,7 @@ const CreateTrip = () => {
           <DialogHeader>
             <DialogTitle>Sign Up?</DialogTitle>
             <DialogDescription>
-              <img src='logo.svg' className='mt-5' />
+              <img src='logoipsum-245.svg' className='mt-5' />
               <h2 className='mt-7 font-bold text-lg'>Sign In with Google</h2>
               <p>Sign in with Google for authentication</p>
               <Button className='w-full mt-5 flex gap-4 items-center text-center' onClick={login}>
