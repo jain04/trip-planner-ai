@@ -1,7 +1,7 @@
 import { db } from '@/services/fireBaseConfig';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
-import { useNavigation } from 'react-router-dom';
+import { useNavigate, useNavigation } from 'react-router-dom';
 import UserTripCard from './Components/UserTripCard';
 
 const MyTrips = () => {
@@ -9,7 +9,7 @@ const MyTrips = () => {
     GetUserTrips();
   }, []);
 
-  const navigation = useNavigation();
+  const navigation = useNavigate();
   const [userTrips, setUserTrips] = useState([]);
 
   const GetUserTrips = async () => {
