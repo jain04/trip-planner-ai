@@ -36,12 +36,10 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_AUTH_CLIENT_ID}>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        
+        <Header />
         <Toaster />
         
-        <RouterProvider router={router}>
-        <Header />
-        </RouterProvider>
+        <RouterProvider router={router} />
       </ThemeProvider>
 
     </GoogleOAuthProvider>;
