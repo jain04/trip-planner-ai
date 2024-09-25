@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
-import { Link, useNavigation } from 'react-router-dom'; // Import useNavigate and Link
+import { useNavigate, Link } from 'react-router-dom'; // Import useNavigate and Link
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { FcGoogle } from "react-icons/fc";
 import axios from 'axios';
@@ -11,7 +11,7 @@ import { ModeToggle } from './ModeToggle';
 const Header = () => {
   const users = JSON.parse(localStorage.getItem("user"));
   const [openDialog, setOpenDialog] = useState(false);
-
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     console.log(users);
@@ -22,34 +22,36 @@ const Header = () => {
     onError: (error) => console.log(error),
   });
 
-  const GetUserProfile = (tokenInfo) => {
-    axios
-      .get(`https://www.googleapis.com/oauth2/v1/userinfo`, {
+  const GetUserProfile = async (tokenInfo) => {
+    try {
+      const response = await axios.get(`https://www.googleapis.com/oauth2/v1/userinfo`, {
         headers: {
           Authorization: `Bearer ${tokenInfo?.access_token}`,
           Accept: 'Application/json',
         },
-      })
-      .then((resp) => {
-        console.log(resp);
-        localStorage.setItem('user', JSON.stringify(resp.data));
-        setOpenDialog(false);
-        window.location.reload();
       });
+      console.log(response);
+      localStorage.setItem('user', JSON.stringify(response.data));
+      setOpenDialog(false); // Close dialog on successful login
+    } catch (error) {
+      console.error("Error fetching user profile:", error);
+    }
   };
+
   return (
     <div className='p-3 shadow-sm flex justify-between items-center px-5'>
       <img src="/logo.svg" alt="logo" />
       <div className='flex items-center gap-5'>
+         {/* ModeToggle component */}
+         <ModeToggle />
         {users ? (
           <div className='flex gap-5 items-center'>
             {/* Use Link for in-app navigation */}
-            <a href="/my-trips">
+            <Link to="/my-trips">
               <Button variant="outline" className='rounded-full'>My Trip</Button>
-            </a>
+            </Link>
 
-            {/* ModeToggle component */}
-            <ModeToggle />
+           
 
             <Popover>
               <PopoverTrigger>
