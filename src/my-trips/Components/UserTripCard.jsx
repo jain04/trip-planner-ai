@@ -34,17 +34,17 @@ const UserTripCard = ({ trip }) => {
           className="w-full h-48 sm:h-56 md:h-64 object-cover rounded-lg"
           alt={trip?.userSelection?.location?.label || 'Trip Image'}
         />
-        <div className="p-4">
+        <div className="p-4 bg-white dark:bg-gray-800"> {/* Adjusted for dark mode */}
           {/* Responsive Text */}
-          <h2 className="font-bold text-base sm:text-lg md:text-xl">
+          <h2 className="font-bold text-base sm:text-lg md:text-xl text-black dark:text-white">
             {trip?.userSelection?.location?.label}
           </h2>
-          <h2 className="text-gray-400 text-xs sm:text-sm md:text-base">
-            {trip?.userSelection.noOfDays} Days trip with{' '}
-            {trip?.userSelection.budget} budget
+          <h2 className="text-gray-400 dark:text-gray-300 text-xs sm:text-sm md:text-base">
+            {trip?.userSelection.noOfDays} Days trip with {trip?.userSelection.budget} budget
           </h2>
         </div>
       </div>
+
     </Link>
   );
 };

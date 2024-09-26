@@ -35,21 +35,22 @@ const PlaceCard = ({ place }) => {
       <div className='shadow-md rounded-xl p-4 mt-3 flex flex-col md:flex-col sm:flex-row gap-3 sm:gap-5 hover:scale-105 transition-all hover:shadow-lg cursor-pointer'>
         {/* Image with responsive height and width */}
         <img
-         src={photoUrl ? photoUrl : <AiOutlineLoading3Quarters className='w-7 h-7 animate-spin' />}
+          src={photoUrl ? photoUrl : <AiOutlineLoading3Quarters className='w-7 h-7 animate-spin' />}
           className='h-[160px] w-full sm:w-[180px] rounded-xl object-cover'
           alt='Place'
         />
 
         <div className='flex flex-col'>
           {/* Font size adjustments for different screen sizes */}
-          <h2 className='font-bold text-md sm:text-lg'>
+          <h2 className='font-bold text-md sm:text-lg text-black dark:text-white'>
             {place.placeName}
           </h2>
-          <p className='text-xs sm:text-sm text-gray-400'>
+          <p className='text-xs sm:text-sm text-gray-400 dark:text-gray-300'>
             {place.placeDetails}
           </p>
         </div>
       </div>
+
     </Link>
   );
 };

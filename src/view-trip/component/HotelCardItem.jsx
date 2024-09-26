@@ -44,16 +44,21 @@ const HotelCardItem = ({ hotel }) => {
         />
         <div className='my-2 gap-2'>
           {/* Font size adjustments for mobile and larger screens */}
-          <h2 className='font-medium text-sm md:text-base lg:text-lg'>
+          <h2 className='font-medium text-sm md:text-base lg:text-lg text-black dark:text-white'>
             {hotel?.hotelName}
           </h2>
-          <h2 className='text-xs md:text-sm text-gray-500'>
+          <h2 className='text-xs md:text-sm text-gray-500 dark:text-gray-400'>
             📍 {hotel?.hotelAddress}
           </h2>
-          <h2 className='text-xs md:text-sm'>💳 {hotel?.price}</h2>
-          <h2 className='text-xs md:text-sm'>⭐⭐ {hotel?.rating}</h2>
+          <h2 className='text-xs md:text-sm text-gray-600 dark:text-gray-300'>
+            💳 {hotel?.price}
+          </h2>
+          <h2 className='text-xs md:text-sm text-gray-600 dark:text-gray-300'>
+            ⭐⭐ {hotel?.rating}
+          </h2>
         </div>
       </div>
+
     </Link>
   );
 };

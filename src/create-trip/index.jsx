@@ -138,17 +138,21 @@ const CreateTrip = () => {
               <div
                 key={index}
                 onClick={() => handleInputChange('budget', item.title)}
-                className={`p-4 border rounded-lg hover:shadow-lg cursor-pointer ${
-                  formData?.budget === item.title ? 'shadow-lg border-black' : ''
-                }`}
+                className={`p-4 border rounded-lg hover:shadow-lg cursor-pointer ${formData?.budget === item.title
+                    ? 'shadow-lg border-black dark:border-gray-300 bg-white dark:bg-gray-700' // Selected: Black border in light, gray in dark mode
+                    : 'dark:bg-gray-800' // Default background for dark mode
+                  }`}
               >
                 <h2 className='text-4xl'>{item.icon}</h2>
-                <h2 className='font-bold text-lg'>{item.title}</h2>
-                <h2 className='text-sm text-gray-500'>{item.desc}</h2>
+                <h2 className={`font-bold text-lg ${formData?.budget === item.title ? 'text-black dark:text-white' : 'dark:text-gray-300'}`}>
+                  {item.title}
+                </h2>
+                <h2 className='text-sm text-gray-500 dark:text-gray-400'>{item.desc}</h2>
               </div>
             ))}
           </div>
         </div>
+
 
         <div>
           <h2 className='text-lg md:text-xl my-3 font-medium'>Who are you planning to travel with?</h2>
@@ -157,17 +161,21 @@ const CreateTrip = () => {
               <div
                 key={index}
                 onClick={() => handleInputChange('traveler', item.people)}
-                className={`p-4 border rounded-lg hover:shadow-lg cursor-pointer ${
-                  formData?.traveler === item.people ? 'shadow-lg border-black' : ''
-                }`}
+                className={`p-4 border rounded-lg hover:shadow-lg cursor-pointer ${formData?.traveler === item.people
+                    ? 'shadow-lg border-black dark:border-gray-300 bg-white dark:bg-gray-700' // Selected: Light and Dark mode styling
+                    : 'dark:bg-gray-800' // Non-selected background in dark mode
+                  }`}
               >
                 <h2 className='text-4xl'>{item.icon}</h2>
-                <h2 className='font-bold text-lg'>{item.title}</h2>
-                <h2 className='text-sm text-gray-500'>{item.desc}</h2>
+                <h2 className={`font-bold text-lg ${formData?.traveler === item.people ? 'text-black dark:text-white' : 'dark:text-gray-300'}`}>
+                  {item.title}
+                </h2>
+                <h2 className='text-sm text-gray-500 dark:text-gray-400'>{item.desc}</h2>
               </div>
             ))}
           </div>
         </div>
+
 
         <div className='my-10 flex justify-end'>
           <Button onClick={onGenerateTrip} disabled={loading}>
