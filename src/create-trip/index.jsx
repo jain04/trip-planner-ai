@@ -68,7 +68,7 @@ const CreateTrip = () => {
       return;
     }
 
-    if (formData?.noOfDays > 5 || !formData?.location || !formData?.budget || !formData?.traveler) {
+    if (formData?.noOfDays > 10 || !formData?.location || !formData?.budget || !formData?.traveler) {
       toast("Please fill all details.");
       return;
     }
@@ -127,9 +127,23 @@ const CreateTrip = () => {
         </div>
 
         <div>
-          <h2 className='text-lg md:text-xl my-3 font-medium'>How many days are you planning for your trip?</h2>
-          <Input placeholder={'Ex. 3'} type='number' onChange={(e) => handleInputChange('noOfDays', e.target.value)} />
-        </div>
+  <h2 className='text-lg md:text-xl my-3 font-medium'>How many days are you planning for your trip?</h2>
+  <Input
+    placeholder={'Ex. 3'}
+    type='number'
+    max='10' // Set maximum value to 10
+    onChange={(e) => {
+      const value = e.target.value;
+      // Prevent user from entering more than 10 days
+      if (value <= 10) {
+        handleInputChange('noOfDays', value);
+      }else{
+        toast("value should be less than 10.");
+      }
+    }}
+  />
+</div>
+
 
         <div>
           <h2 className='text-lg md:text-xl my-3 font-medium'>What is your Budget?</h2>
