@@ -22,12 +22,14 @@ import { db } from '@/services/fireBaseConfig.jsx';
 import { useNavigate } from 'react-router-dom';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
+
 const CreateTrip = () => {
   const [place, setplace] = useState();
   const [formData, setformData] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
   const [loading, setloading] = useState(false);
   const navigate = useNavigate();
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const handleInputChange = (name, value) => {
     setformData({
@@ -38,6 +40,7 @@ const CreateTrip = () => {
 
   useEffect(() => {
     console.log(formData);
+    setIsDarkMode(document.documentElement.classList.contains('dark'));
   }, [formData]);
 
   const login = useGoogleLogin({
@@ -122,6 +125,38 @@ const CreateTrip = () => {
                 setplace(v);
                 handleInputChange('location', v);
               },
+              styles:{
+                control: (base) => ({
+                  ...base,
+                  backgroundColor: isDarkMode ? '#1f2937' : '#fff', // Dark mode background
+                  color: isDarkMode ? '#f9fafb' : '#111827', // Text color in dark mode
+                  borderColor: isDarkMode ? '#4b5563' : '#d1d5db', // Border color in dark mode
+                }),
+                input: (base) => ({
+                  ...base,
+                  color: isDarkMode ? '#f9fafb' : '#111827', // Input text color in dark mode
+                }),
+                singleValue: (base) => ({
+                  ...base,
+                  color: isDarkMode ? '#f9fafb' : '#111827', // Selected value color
+                }),
+                menu: (base) => ({
+                  ...base,
+                  backgroundColor: isDarkMode ? '#1f2937' : '#fff', // Suggestions dropdown background
+                  color: isDarkMode ? '#f9fafb' : '#111827', // Suggestion text color
+                }),
+                option: (base, state) => ({
+                  ...base,
+                  backgroundColor: state.isFocused
+                    ? isDarkMode
+                      ? '#374151'
+                      : '#e5e7eb'
+                    : isDarkMode
+                    ? '#1f2937'
+                    : '#fff',
+                  color: isDarkMode ? '#f9fafb' : '#111827',
+                }),
+              }
             }}
           />
         </div>
