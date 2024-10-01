@@ -1,6 +1,8 @@
 # AI Trip Planner
 ![App Screenshot](./public/AI_screenshot.png)
 
+-**LIVE SITE**:https://trip-plan-adi.netlify.app/
+
 ## Overview
 The **AI Trip Planner** is an intelligent travel planning application designed to streamline the process of organizing trips, vacations, or business travel. The app leverages artificial intelligence to offer personalized itineraries based on user preferences such as budget, travel dates, preferred destinations, and travel companions. By integrating external APIs like Google Places, users can explore destinations, accommodations, and points of interest, ensuring a smooth and tailored travel experience.
 
